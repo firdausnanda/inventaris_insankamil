@@ -13,7 +13,7 @@
                         </ul>
 
                         <div class="d-block d-lg-none py-4">
-                            <a href="{{ route('dashboard') }}" class="text-nowrap logo-img">
+                            <a href="{{ Auth::user()->hasRole('superadmin') ? route('superadmin.dashboard.index') : route('admin.dashboard.index') }}" class="text-nowrap logo-img">
                                 <img src="{{ asset('images/logos/dark-logo.svg') }}" class="dark-logo"
                                     alt="Logo-Dark" />
                                 <img src="{{ asset('images/logos/light-logo.svg') }}" class="light-logo"
@@ -52,88 +52,7 @@
                                                     new</span>
                                             </div>
                                             <div class="message-body" data-simplebar>
-                                                <a href="javascript:void(0)"
-                                                    class="py-6 px-7 d-flex align-items-center dropdown-item">
-                                                    <span class="me-3">
-                                                        <img src="{{ asset('images/profile/user-2.jpg') }}"
-                                                            alt="user" class="rounded-circle" width="48"
-                                                            height="48" />
-                                                    </span>
-                                                    <div class="w-100">
-                                                        <h6 class="mb-1 fw-semibold lh-base">Roman Joined the Team!
-                                                        </h6>
-                                                        <span class="fs-2 d-block text-body-secondary">Congratulate
-                                                            him</span>
-                                                    </div>
-                                                </a>
-                                                <a href="javascript:void(0)"
-                                                    class="py-6 px-7 d-flex align-items-center dropdown-item">
-                                                    <span class="me-3">
-                                                        <img src="{{ asset('images/profile/user-3.jpg') }}"
-                                                            alt="user" class="rounded-circle" width="48"
-                                                            height="48" />
-                                                    </span>
-                                                    <div class="w-100">
-                                                        <h6 class="mb-1 fw-semibold lh-base">New message</h6>
-                                                        <span class="fs-2 d-block text-body-secondary">Salma sent you
-                                                            new message</span>
-                                                    </div>
-                                                </a>
-                                                <a href="javascript:void(0)"
-                                                    class="py-6 px-7 d-flex align-items-center dropdown-item">
-                                                    <span class="me-3">
-                                                        <img src="{{ asset('images/profile/user-4.jpg') }}"
-                                                            alt="user" class="rounded-circle" width="48"
-                                                            height="48" />
-                                                    </span>
-                                                    <div class="w-100">
-                                                        <h6 class="mb-1 fw-semibold lh-base">Bianca sent payment</h6>
-                                                        <span class="fs-2 d-block text-body-secondary">Check your
-                                                            earnings</span>
-                                                    </div>
-                                                </a>
-                                                <a href="javascript:void(0)"
-                                                    class="py-6 px-7 d-flex align-items-center dropdown-item">
-                                                    <span class="me-3">
-                                                        <img src="{{ asset('images/profile/user-5.jpg') }}"
-                                                            alt="user" class="rounded-circle" width="48"
-                                                            height="48" />
-                                                    </span>
-                                                    <div class="w-100">
-                                                        <h6 class="mb-1 fw-semibold lh-base">Jolly completed tasks
-                                                        </h6>
-                                                        <span class="fs-2 d-block text-body-secondary">Assign her new
-                                                            tasks</span>
-                                                    </div>
-                                                </a>
-                                                <a href="javascript:void(0)"
-                                                    class="py-6 px-7 d-flex align-items-center dropdown-item">
-                                                    <span class="me-3">
-                                                        <img src="{{ asset('images/profile/user-6.jpg') }}"
-                                                            alt="user" class="rounded-circle" width="48"
-                                                            height="48" />
-                                                    </span>
-                                                    <div class="w-100">
-                                                        <h6 class="mb-1 fw-semibold lh-base">John received payment
-                                                        </h6>
-                                                        <span class="fs-2 d-block text-body-secondary">$230 deducted
-                                                            from account</span>
-                                                    </div>
-                                                </a>
-                                                <a href="javascript:void(0)"
-                                                    class="py-6 px-7 d-flex align-items-center dropdown-item">
-                                                    <span class="me-3">
-                                                        <img src="{{ asset('images/profile/user-7.jpg') }}"
-                                                            alt="user" class="rounded-circle" width="48"
-                                                            height="48" />
-                                                    </span>
-                                                    <div class="w-100">
-                                                        <h6 class="mb-1 fw-semibold lh-base">Roman Joined the Team!
-                                                        </h6>
-                                                        <span class="fs-2 d-block text-body-secondary">Congratulate
-                                                            him</span>
-                                                    </div>
-                                                </a>
+
                                             </div>
                                             <div class="py-6 px-7 mb-1">
                                                 <button class="btn btn-outline-primary w-100">See All
@@ -170,10 +89,10 @@
                                                         class="rounded-circle" width="80" height="80"
                                                         alt="modernize-img" />
                                                     <div class="ms-3">
-                                                        <h5 class="mb-1 fs-3">Mathew Anderson</h5>
-                                                        <span class="mb-1 d-block">Designer</span>
+                                                        <h5 class="mb-1 fs-3">{{ Auth::user()->name }}</h5>
+                                                        <span class="mb-1 d-block">{{ Auth::user()->roles->first()->name }}</span>
                                                         <p class="mb-0 d-flex align-items-center gap-2">
-                                                            <i class="ti ti-mail fs-4"></i> info@modernize.com
+                                                            <i class="ti ti-mail fs-4"></i> {{ Auth::user()->email }}
                                                         </p>
                                                     </div>
                                                 </div>
@@ -191,52 +110,17 @@
                                                                 Settings</span>
                                                         </div>
                                                     </a>
-                                                    <a href="../main/app-email.html"
-                                                        class="py-8 px-7 d-flex align-items-center">
-                                                        <span
-                                                            class="d-flex align-items-center justify-content-center text-bg-light rounded-1 p-6">
-                                                            <img src="{{ asset('images/svgs/icon-inbox.svg') }}"
-                                                                alt="modernize-img" width="24" height="24" />
-                                                        </span>
-                                                        <div class="w-100 ps-3">
-                                                            <h6 class="mb-1 fs-3 fw-semibold lh-base">My Inbox</h6>
-                                                            <span class="fs-2 d-block text-body-secondary">Messages &
-                                                                Emails</span>
-                                                        </div>
-                                                    </a>
-                                                    <a href="../main/app-notes.html"
-                                                        class="py-8 px-7 d-flex align-items-center">
-                                                        <span
-                                                            class="d-flex align-items-center justify-content-center text-bg-light rounded-1 p-6">
-                                                            <img src="{{ asset('images/svgs/icon-tasks.svg') }}"
-                                                                alt="modernize-img" width="24" height="24" />
-                                                        </span>
-                                                        <div class="w-100 ps-3">
-                                                            <h6 class="mb-1 fs-3 fw-semibold lh-base">My Task</h6>
-                                                            <span class="fs-2 d-block text-body-secondary">To-do and
-                                                                Daily Tasks</span>
-                                                        </div>
-                                                    </a>
+
                                                 </div>
                                                 <div class="d-grid py-4 px-7 pt-8">
-                                                    <div
-                                                        class="upgrade-plan bg-primary-subtle position-relative overflow-hidden rounded-4 p-4 mb-9">
-                                                        <div class="row">
-                                                            <div class="col-6">
-                                                                <h5 class="fs-4 mb-3 fw-semibold">Unlimited Access
-                                                                </h5>
-                                                                <button class="btn btn-primary">Upgrade</button>
-                                                            </div>
-                                                            <div class="col-6">
-                                                                <div class="m-n4 unlimited-img">
-                                                                    <img src="{{ asset('images/backgrounds/unlimited-bg.png') }}"
-                                                                        alt="modernize-img" class="w-100" />
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <a href="../main/authentication-login.html"
-                                                        class="btn btn-outline-primary">Log Out</a>
+                                                    <a href="{{ route('logout') }}"
+                                                        class="btn btn-outline-primary"
+                                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                                        Log Out
+                                                    </a>
+                                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                                        @csrf
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
@@ -469,17 +353,17 @@
                                 </a>
                             </li>
                             <li class="nav-item d-none d-xl-block">
-                                <a href="{{ route('dashboard') }}" class="text-nowrap nav-link">
-                                    <img src="{{ asset('images/logos/dark-logo.svg') }}" class="dark-logo"
+                                <a href="{{ Auth::user()->hasRole('superadmin') ? route('superadmin.dashboard.index') : route('admin.dashboard.index') }}" class="text-nowrap nav-link">
+                                    <img src="{{ asset('images/logos/logo2.png') }}" class="dark-logo"
                                         width="180" alt="modernize-img" />
-                                    <img src="{{ asset('images/logos/light-logo.svg') }}" class="light-logo"
+                                    <img src="{{ asset('images/logos/logo2.png') }}" class="light-logo"
                                         width="180" alt="modernize-img" />
                                 </a>
                             </li>
                         </ul>
                         <div class="d-block d-xl-none">
                             <a href="../main/index.html" class="text-nowrap nav-link">
-                                <img src="../assets/images/logos/dark-logo.svg" width="180" alt="modernize-img" />
+                                <img src="{{ asset('images/logos/logo2.png') }}" width="180" alt="modernize-img" />
                             </a>
                         </div>
                         <a class="navbar-toggler nav-icon-hover-bg rounded-circle p-0 mx-0 border-0"
@@ -516,82 +400,7 @@
                                                     new</span>
                                             </div>
                                             <div class="message-body" data-simplebar>
-                                                <a href="javascript:void(0)"
-                                                    class="py-6 px-7 d-flex align-items-center dropdown-item">
-                                                    <span class="me-3">
-                                                        <img src="../assets/images/profile/user-2.jpg" alt="user"
-                                                            class="rounded-circle" width="48" height="48" />
-                                                    </span>
-                                                    <div class="w-100">
-                                                        <h6 class="mb-1 fw-semibold lh-base">Roman Joined the Team!
-                                                        </h6>
-                                                        <span class="fs-2 d-block text-body-secondary">Congratulate
-                                                            him</span>
-                                                    </div>
-                                                </a>
-                                                <a href="javascript:void(0)"
-                                                    class="py-6 px-7 d-flex align-items-center dropdown-item">
-                                                    <span class="me-3">
-                                                        <img src="../assets/images/profile/user-3.jpg" alt="user"
-                                                            class="rounded-circle" width="48" height="48" />
-                                                    </span>
-                                                    <div class="w-100">
-                                                        <h6 class="mb-1 fw-semibold lh-base">New message</h6>
-                                                        <span class="fs-2 d-block text-body-secondary">Salma sent you
-                                                            new message</span>
-                                                    </div>
-                                                </a>
-                                                <a href="javascript:void(0)"
-                                                    class="py-6 px-7 d-flex align-items-center dropdown-item">
-                                                    <span class="me-3">
-                                                        <img src="../assets/images/profile/user-4.jpg" alt="user"
-                                                            class="rounded-circle" width="48" height="48" />
-                                                    </span>
-                                                    <div class="w-100">
-                                                        <h6 class="mb-1 fw-semibold lh-base">Bianca sent payment</h6>
-                                                        <span class="fs-2 d-block text-body-secondary">Check your
-                                                            earnings</span>
-                                                    </div>
-                                                </a>
-                                                <a href="javascript:void(0)"
-                                                    class="py-6 px-7 d-flex align-items-center dropdown-item">
-                                                    <span class="me-3">
-                                                        <img src="../assets/images/profile/user-5.jpg" alt="user"
-                                                            class="rounded-circle" width="48" height="48" />
-                                                    </span>
-                                                    <div class="w-100">
-                                                        <h6 class="mb-1 fw-semibold lh-base">Jolly completed tasks
-                                                        </h6>
-                                                        <span class="fs-2 d-block text-body-secondary">Assign her new
-                                                            tasks</span>
-                                                    </div>
-                                                </a>
-                                                <a href="javascript:void(0)"
-                                                    class="py-6 px-7 d-flex align-items-center dropdown-item">
-                                                    <span class="me-3">
-                                                        <img src="../assets/images/profile/user-6.jpg" alt="user"
-                                                            class="rounded-circle" width="48" height="48" />
-                                                    </span>
-                                                    <div class="w-100">
-                                                        <h6 class="mb-1 fw-semibold lh-base">John received payment
-                                                        </h6>
-                                                        <span class="fs-2 d-block text-body-secondary">$230 deducted
-                                                            from account</span>
-                                                    </div>
-                                                </a>
-                                                <a href="javascript:void(0)"
-                                                    class="py-6 px-7 d-flex align-items-center dropdown-item">
-                                                    <span class="me-3">
-                                                        <img src="../assets/images/profile/user-7.jpg" alt="user"
-                                                            class="rounded-circle" width="48" height="48" />
-                                                    </span>
-                                                    <div class="w-100">
-                                                        <h6 class="mb-1 fw-semibold lh-base">Roman Joined the Team!
-                                                        </h6>
-                                                        <span class="fs-2 d-block text-body-secondary">Congratulate
-                                                            him</span>
-                                                    </div>
-                                                </a>
+
                                             </div>
                                             <div class="py-6 px-7 mb-1">
                                                 <button class="btn btn-outline-primary w-100">See All
@@ -611,7 +420,7 @@
                                             aria-expanded="false">
                                             <div class="d-flex align-items-center">
                                                 <div class="user-profile-img">
-                                                    <img src="../assets/images/profile/user-1.jpg"
+                                                    <img src="{{ asset('images/profile/user-1.jpg') }}"
                                                         class="rounded-circle" width="35" height="35"
                                                         alt="modernize-img" />
                                                 </div>
@@ -624,7 +433,7 @@
                                                     <h5 class="mb-0 fs-5 fw-semibold">User Profile</h5>
                                                 </div>
                                                 <div class="d-flex align-items-center py-9 mx-7 border-bottom">
-                                                    <img src="../assets/images/profile/user-1.jpg"
+                                                    <img src="{{ asset('images/profile/user-1.jpg') }}"
                                                         class="rounded-circle" width="80" height="80"
                                                         alt="modernize-img" />
                                                     <div class="ms-3">
@@ -640,7 +449,7 @@
                                                         class="py-8 px-7 mt-8 d-flex align-items-center">
                                                         <span
                                                             class="d-flex align-items-center justify-content-center text-bg-light rounded-1 p-6">
-                                                            <img src="../assets/images/svgs/icon-account.svg"
+                                                            <img src="{{ asset('images/svgs/icon-account.svg') }}"
                                                                 alt="modernize-img" width="24" height="24" />
                                                         </span>
                                                         <div class="w-100 ps-3">
@@ -649,52 +458,15 @@
                                                                 Settings</span>
                                                         </div>
                                                     </a>
-                                                    <a href="../main/app-email.html"
-                                                        class="py-8 px-7 d-flex align-items-center">
-                                                        <span
-                                                            class="d-flex align-items-center justify-content-center text-bg-light rounded-1 p-6">
-                                                            <img src="../assets/images/svgs/icon-inbox.svg"
-                                                                alt="modernize-img" width="24" height="24" />
-                                                        </span>
-                                                        <div class="w-100 ps-3">
-                                                            <h6 class="mb-1 fs-3 fw-semibold lh-base">My Inbox</h6>
-                                                            <span class="fs-2 d-block text-body-secondary">Messages &
-                                                                Emails</span>
-                                                        </div>
-                                                    </a>
-                                                    <a href="../main/app-notes.html"
-                                                        class="py-8 px-7 d-flex align-items-center">
-                                                        <span
-                                                            class="d-flex align-items-center justify-content-center text-bg-light rounded-1 p-6">
-                                                            <img src="../assets/images/svgs/icon-tasks.svg"
-                                                                alt="modernize-img" width="24" height="24" />
-                                                        </span>
-                                                        <div class="w-100 ps-3">
-                                                            <h6 class="mb-1 fs-3 fw-semibold lh-base">My Task</h6>
-                                                            <span class="fs-2 d-block text-body-secondary">To-do and
-                                                                Daily Tasks</span>
-                                                        </div>
-                                                    </a>
                                                 </div>
                                                 <div class="d-grid py-4 px-7 pt-8">
-                                                    <div
-                                                        class="upgrade-plan bg-primary-subtle position-relative overflow-hidden rounded-4 p-4 mb-9">
-                                                        <div class="row">
-                                                            <div class="col-6">
-                                                                <h5 class="fs-4 mb-3 fw-semibold">Unlimited Access
-                                                                </h5>
-                                                                <button class="btn btn-primary">Upgrade</button>
-                                                            </div>
-                                                            <div class="col-6">
-                                                                <div class="m-n4 unlimited-img">
-                                                                    <img src="../assets/images/backgrounds/unlimited-bg.png"
-                                                                        alt="modernize-img" class="w-100" />
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <a href="../main/authentication-login.html"
+                                                    <a href="{{ route('logout') }}"
+                                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
                                                         class="btn btn-outline-primary">Log Out</a>
+
+                                                    <form action="{{ route('logout') }}" method="POST" class="d-none">
+                                                        @csrf
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
@@ -727,14 +499,64 @@
                             <!-- Dashboard -->
                             <!-- =================== -->
                             <li class="sidebar-item">
-                                <a class="sidebar-link" href="" id="get-url" aria-expanded="false">
+                                <a class="sidebar-link" href="{{ Auth::user()->hasRole('superadmin') ? route('superadmin.dashboard.index') : route('admin.dashboard.index') }}" id="get-url" aria-expanded="false">
                                     <span>
                                         <i class="ti ti-aperture"></i>
                                     </span>
                                     <span class="hide-menu">Dashboard</span>
                                 </a>
                             </li>
-
+                            <!-- =================== -->
+                            <!-- Produk -->
+                            <!-- =================== -->
+                            <li class="sidebar-item">
+                                <a class="sidebar-link" href="{{ Auth::user()->hasRole('superadmin') ? route('superadmin.produk.index') : route('admin.produk.index') }}" id="get-url" aria-expanded="false">
+                                    <span>
+                                        <i class="ti ti-book"></i>
+                                    </span>
+                                    <span class="hide-menu">Produk</span>
+                                </a>
+                            </li>
+                            <!-- =================== -->
+                            <!-- User -->
+                            <!-- =================== -->
+                            <li class="sidebar-item">
+                                <a class="sidebar-link" href="{{ Auth::user()->hasRole('superadmin') ? route('superadmin.user.index') : route('admin.user.index') }}" aria-expanded="false">
+                                    <span>
+                                        <i class="ti ti-user"></i>
+                                    </span>
+                                    <span class="hide-menu">User</span>
+                                </a>
+                            </li>
+                            <!-- =================== -->
+                            <!-- Monitoring -->
+                            <!-- =================== -->
+                            <li class="nav-small-cap">
+                                <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                                <span class="hide-menu">Monitoring</span>
+                            </li>
+                            <!-- =================== -->
+                            <!-- Activity Log -->
+                            <!-- =================== -->
+                            <li class="sidebar-item">
+                                <a class="sidebar-link" href="{{ Auth::user()->hasRole('superadmin') ? route('superadmin.activity-log.index') : route('admin.activity-log.index') }}" id="get-url" aria-expanded="false">
+                                    <span>
+                                        <i class="ti ti-activity"></i>
+                                    </span>
+                                    <span class="hide-menu">Activity Log</span>
+                                </a>
+                            </li>
+                            <!-- =================== -->
+                            <!-- Error Log -->
+                            <!-- =================== -->
+                            <li class="sidebar-item">
+                                <a class="sidebar-link" href="{{ url('log-viewer') }}" id="get-url" aria-expanded="false">
+                                    <span>
+                                        <i class="ti ti-error-404"></i>
+                                    </span>
+                                    <span class="hide-menu">Error Log</span>
+                                </a>
+                            </li>
                         </ul>
                     </nav>
                     <!-- End Sidebar navigation -->

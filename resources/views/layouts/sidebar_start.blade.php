@@ -4,9 +4,9 @@
                 <!-- Start Vertical Layout Sidebar -->
                 <!-- ---------------------------------- -->
                 <div class="brand-logo d-flex align-items-center justify-content-between">
-                    <a href="{{ route('dashboard') }}" class="text-nowrap logo-img">
-                        <img src="{{ asset('images/logos/dark-logo.svg') }}" class="dark-logo" alt="Logo-Dark" />
-                        <img src="{{ asset('images/logos/light-logo.svg') }}" class="light-logo" alt="Logo-light" />
+                    <a href="{{ Auth::user()->hasRole('superadmin') ? route('superadmin.dashboard.index') : route('admin.dashboard.index') }}" class="text-nowrap logo-img">
+                        <img src="{{ asset('images/logos/logo2.png') }}" class="dark-logo" alt="Logo-Dark" />
+                        <img src="{{ asset('images/logos/logo2.png') }}" class="light-logo" alt="Logo-light" />
                     </a>
                     <a href="javascript:void(0)"
                         class="sidebartoggler ms-auto text-decoration-none fs-5 d-block d-xl-none">
@@ -28,11 +28,62 @@
                         <!-- Dashboard -->
                         <!-- ---------------------------------- -->
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="" id="get-url" aria-expanded="false">
+                            <a class="sidebar-link" href="{{ Auth::user()->hasRole('superadmin') ? route('superadmin.dashboard.index') : route('admin.dashboard.index') }}" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-aperture"></i>
                                 </span>
                                 <span class="hide-menu">Dashboard</span>
+                            </a>
+                        </li>
+                        <!-- ---------------------------------- -->
+                        <!-- Produk -->
+                        <!-- ---------------------------------- -->
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="{{ Auth::user()->hasRole('superadmin') ? route('superadmin.produk.index') : route('admin.produk.index') }}" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-book"></i>
+                                </span>
+                                <span class="hide-menu">Produk</span>
+                            </a>
+                        </li>
+                        <!-- =================== -->
+                        <!-- User -->
+                        <!-- =================== -->
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="{{ Auth::user()->hasRole('superadmin') ? route('superadmin.user.index') : route('admin.user.index') }}" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-user"></i>
+                                </span>
+                                <span class="hide-menu">User</span>
+                            </a>
+                        </li>
+                        <!-- =================== -->
+                        <!-- Monitoring -->
+                        <!-- =================== -->
+                        <li class="nav-small-cap">
+                            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                            <span class="hide-menu">Monitoring</span>
+                        </li>
+                        <!-- ---------------------------------- -->
+                        <!-- Activity Log -->
+                        <!-- ---------------------------------- -->
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="{{ Auth::user()->hasRole('superadmin') ? route('superadmin.activity-log.index') : route('admin.activity-log.index') }}" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-activity"></i>
+                                </span>
+                                <span class="hide-menu">Activity Log</span>
+                            </a>
+                        </li>
+                        <!-- =================== -->
+                        <!-- Error Log -->
+                        <!-- =================== -->
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="{{ url('log-viewer') }}" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-error-404"></i>
+                                </span>
+                                <span class="hide-menu">Error Log</span>
                             </a>
                         </li>
                     </ul>
@@ -45,13 +96,17 @@
                                 height="40" alt="modernize-img" />
                         </div>
                         <div class="john-title">
-                            <h6 class="mb-0 fs-4 fw-semibold">Mathew</h6>
-                            <span class="fs-2">Designer</span>
+                            <h6 class="mb-0 fs-4 fw-semibold">{{ Auth::user()->name }}</h6>
+                            <span class="fs-2">{{ Auth::user()->roles->first()->name }}</span>
                         </div>
-                        <button class="border-0 bg-transparent text-primary ms-auto" tabindex="0" type="button"
-                            aria-label="logout" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="logout">
+                        <a class="border-0 bg-transparent text-primary ms-auto" href="{{ route('logout') }}"
+                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                             <i class="ti ti-power fs-6"></i>
-                        </button>
+                        </a>
+
+                        <form action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
                     </div>
                 </div>
 
