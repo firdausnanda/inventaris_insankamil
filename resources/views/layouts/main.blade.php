@@ -24,6 +24,9 @@
 
     {{-- Flatpickr --}}
     <link rel="stylesheet" href="{{ asset('libs/flatpickr/dist/flatpickr.min.css') }}" />
+
+    {{-- Sweetalert --}}
+    <link rel="stylesheet" href="{{ asset('libs/sweetalert2/dist/sweetalert2.min.css') }}" />
 </head>
 
 <body>
