@@ -13,7 +13,7 @@
     <!-- Core Css -->
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}" />
 
-    <title>Modernize Bootstrap Admin</title>
+    <title>Inventaris Insan Kamil</title>
 </head>
 
 <body>
