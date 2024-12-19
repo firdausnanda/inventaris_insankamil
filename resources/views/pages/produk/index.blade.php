@@ -51,6 +51,7 @@
                 responsive: true,
             });
 
+            // Refresh Data
             $('.btn-refresh').on('click', function() {
 
                 Swal.fire({
@@ -84,6 +85,7 @@
                 });
             });
 
+            // Produk Masuk
             $('.btn-produk-masuk').on('click', function() {
                 $.ajax({
                     type: "POST",
@@ -100,8 +102,21 @@
                 });
             });
 
+            // Produk Keluar
             $('.btn-produk-keluar').on('click', function() {
-                console.log('Produk Keluar');
+                $.ajax({
+                    type: "POST",
+                    dataType: 'json',
+                    beforeSend: function() {
+                        Swal.fire('Mohon Tunggu', 'Sedang memproses data...', 'info');
+                    },
+                    success: function(response) {
+                        Swal.fire('Success', 'Data berhasil diambil', 'success');
+                    },
+                    error: function(xhr, status, error) {
+                        Swal.fire('Error', 'Data gagal diambil', 'error');
+                    }
+                });
             });
         });
     </script>
