@@ -4,6 +4,7 @@ namespace App\Providers;
 
 // use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Gate;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -23,6 +24,13 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        // Mendefinisikan gate 'viewLogViewer' untuk mengatur akses ke Log Viewer
+        // Parameter $user adalah user yang sedang login
+        // Saat ini selalu return true yang berarti semua user bisa akses
+        // Bisa diubah menjadi $user->hasRole('admin') untuk batasi ke admin saja
+        Gate::define('viewLogViewer', function ($user) {
+            // Sesuaikan dengan logika authorization Anda
+            return true; // atau $user->isAdmin() atau logika lainnya
+        });
     }
 }
