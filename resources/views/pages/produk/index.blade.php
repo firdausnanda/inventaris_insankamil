@@ -9,7 +9,22 @@
                         <h3 class="mb-3">Produk</h3>
 
                         {{-- Get Data dari Ecommerce --}}
-                        <button class="btn btn-primary mb-3 btn-refresh">Refresh Data</button>
+                        <div class="row">
+                            <div class="col-12 mb-3 d-flex gap-2">
+                                <button class="btn btn-primary d-flex align-items-center btn-refresh">
+                                    <i class="ti ti-refresh me-1"></i>
+                                    Refresh Data
+                                </button>
+                                <button class="btn btn-success d-flex align-items-center btn-produk-masuk">
+                                    <i class="ti ti-box-multiple-plus me-1"></i>
+                                    Produk Masuk
+                                </button>
+                                <button class="btn btn-danger d-flex align-items-center btn-produk-keluar">
+                                    <i class="ti ti-box-multiple-minus me-1"></i>
+                                    Produk Keluar
+                                </button>
+                            </div>
+                        </div>
 
                         <table id="table-product" class="table table-striped table-bordered">
                             <thead>
@@ -67,6 +82,26 @@
                         });
                     }
                 });
+            });
+
+            $('.btn-produk-masuk').on('click', function() {
+                $.ajax({
+                    type: "POST",
+                    dataType: 'json',
+                    beforeSend: function() {
+                        Swal.fire('Mohon Tunggu', 'Sedang memproses data...', 'info');
+                    },
+                    success: function(response) {
+                        Swal.fire('Success', 'Data berhasil diambil', 'success');
+                    },
+                    error: function(xhr, status, error) {
+                        Swal.fire('Error', 'Data gagal diambil', 'error');
+                    }
+                });
+            });
+
+            $('.btn-produk-keluar').on('click', function() {
+                console.log('Produk Keluar');
             });
         });
     </script>

@@ -4,7 +4,8 @@
                 <!-- Start Vertical Layout Sidebar -->
                 <!-- ---------------------------------- -->
                 <div class="brand-logo d-flex align-items-center justify-content-between">
-                    <a href="{{ Auth::user()->hasRole('superadmin') ? route('superadmin.dashboard.index') : route('admin.dashboard.index') }}" class="text-nowrap logo-img">
+                    <a href="{{ Auth::user()->hasRole('superadmin') ? route('superadmin.dashboard.index') : route('admin.dashboard.index') }}"
+                        class="text-nowrap logo-img">
                         <img src="{{ asset('images/logos/logo2.png') }}" class="dark-logo" alt="Logo-Dark" />
                         <img src="{{ asset('images/logos/logo2.png') }}" class="light-logo" alt="Logo-light" />
                     </a>
@@ -28,7 +29,9 @@
                         <!-- Dashboard -->
                         <!-- ---------------------------------- -->
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="{{ Auth::user()->hasRole('superadmin') ? route('superadmin.dashboard.index') : route('admin.dashboard.index') }}" aria-expanded="false">
+                            <a class="sidebar-link"
+                                href="{{ Auth::user()->hasRole('superadmin') ? route('superadmin.dashboard.index') : route('admin.dashboard.index') }}"
+                                aria-expanded="false">
                                 <span>
                                     <i class="ti ti-aperture"></i>
                                 </span>
@@ -39,7 +42,9 @@
                         <!-- Produk -->
                         <!-- ---------------------------------- -->
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="{{ Auth::user()->hasRole('superadmin') ? route('superadmin.produk.index') : route('admin.produk.index') }}" aria-expanded="false">
+                            <a class="sidebar-link"
+                                href="{{ Auth::user()->hasRole('superadmin') ? route('superadmin.produk.index') : route('admin.produk.index') }}"
+                                aria-expanded="false">
                                 <span>
                                     <i class="ti ti-book"></i>
                                 </span>
@@ -47,14 +52,16 @@
                             </a>
                         </li>
                         <!-- =================== -->
-                        <!-- User -->
+                        <!-- Stok Opname -->
                         <!-- =================== -->
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="{{ Auth::user()->hasRole('superadmin') ? route('superadmin.user.index') : route('admin.user.index') }}" aria-expanded="false">
+                            <a class="sidebar-link"
+                                href="{{ Auth::user()->hasRole('superadmin') ? route('superadmin.stok-opname.index') : route('admin.stok-opname.index') }}"
+                                aria-expanded="false">
                                 <span>
-                                    <i class="ti ti-user"></i>
+                                    <i class="ti ti-package"></i>
                                 </span>
-                                <span class="hide-menu">User</span>
+                                <span class="hide-menu">Stok Opname</span>
                             </a>
                         </li>
                         <!-- =================== -->
@@ -64,11 +71,26 @@
                             <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
                             <span class="hide-menu">Monitoring</span>
                         </li>
+                        <!-- =================== -->
+                        <!-- User -->
+                        <!-- =================== -->
+                        <li class="sidebar-item">
+                            <a class="sidebar-link"
+                                href="{{ Auth::user()->hasRole('superadmin') ? route('superadmin.user.index') : route('admin.user.index') }}"
+                                aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-user"></i>
+                                </span>
+                                <span class="hide-menu">User</span>
+                            </a>
+                        </li>
                         <!-- ---------------------------------- -->
                         <!-- Activity Log -->
                         <!-- ---------------------------------- -->
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="{{ Auth::user()->hasRole('superadmin') ? route('superadmin.activity-log.index') : route('admin.activity-log.index') }}" aria-expanded="false">
+                            <a class="sidebar-link"
+                                href="{{ Auth::user()->hasRole('superadmin') ? route('superadmin.activity-log.index') : route('admin.activity-log.index') }}"
+                                aria-expanded="false">
                                 <span>
                                     <i class="ti ti-activity"></i>
                                 </span>

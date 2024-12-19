@@ -13,7 +13,8 @@
                         </ul>
 
                         <div class="d-block d-lg-none py-4">
-                            <a href="{{ Auth::user()->hasRole('superadmin') ? route('superadmin.dashboard.index') : route('admin.dashboard.index') }}" class="text-nowrap logo-img">
+                            <a href="{{ Auth::user()->hasRole('superadmin') ? route('superadmin.dashboard.index') : route('admin.dashboard.index') }}"
+                                class="text-nowrap logo-img">
                                 <img src="{{ asset('images/logos/dark-logo.svg') }}" class="dark-logo"
                                     alt="Logo-Dark" />
                                 <img src="{{ asset('images/logos/light-logo.svg') }}" class="light-logo"
@@ -90,7 +91,8 @@
                                                         alt="modernize-img" />
                                                     <div class="ms-3">
                                                         <h5 class="mb-1 fs-3">{{ Auth::user()->name }}</h5>
-                                                        <span class="mb-1 d-block">{{ Auth::user()->roles->first()->name }}</span>
+                                                        <span
+                                                            class="mb-1 d-block">{{ Auth::user()->roles->first()->name }}</span>
                                                         <p class="mb-0 d-flex align-items-center gap-2">
                                                             <i class="ti ti-mail fs-4"></i> {{ Auth::user()->email }}
                                                         </p>
@@ -113,12 +115,12 @@
 
                                                 </div>
                                                 <div class="d-grid py-4 px-7 pt-8">
-                                                    <a href="{{ route('logout') }}"
-                                                        class="btn btn-outline-primary"
+                                                    <a href="{{ route('logout') }}" class="btn btn-outline-primary"
                                                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                                         Log Out
                                                     </a>
-                                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                                    <form id="logout-form" action="{{ route('logout') }}"
+                                                        method="POST" class="d-none">
                                                         @csrf
                                                     </form>
                                                 </div>
@@ -353,7 +355,8 @@
                                 </a>
                             </li>
                             <li class="nav-item d-none d-xl-block">
-                                <a href="{{ Auth::user()->hasRole('superadmin') ? route('superadmin.dashboard.index') : route('admin.dashboard.index') }}" class="text-nowrap nav-link">
+                                <a href="{{ Auth::user()->hasRole('superadmin') ? route('superadmin.dashboard.index') : route('admin.dashboard.index') }}"
+                                    class="text-nowrap nav-link">
                                     <img src="{{ asset('images/logos/logo2.png') }}" class="dark-logo"
                                         width="180" alt="modernize-img" />
                                     <img src="{{ asset('images/logos/logo2.png') }}" class="light-logo"
@@ -363,7 +366,8 @@
                         </ul>
                         <div class="d-block d-xl-none">
                             <a href="../main/index.html" class="text-nowrap nav-link">
-                                <img src="{{ asset('images/logos/logo2.png') }}" width="180" alt="modernize-img" />
+                                <img src="{{ asset('images/logos/logo2.png') }}" width="180"
+                                    alt="modernize-img" />
                             </a>
                         </div>
                         <a class="navbar-toggler nav-icon-hover-bg rounded-circle p-0 mx-0 border-0"
@@ -464,7 +468,8 @@
                                                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
                                                         class="btn btn-outline-primary">Log Out</a>
 
-                                                    <form action="{{ route('logout') }}" method="POST" class="d-none">
+                                                    <form action="{{ route('logout') }}" method="POST"
+                                                        class="d-none">
                                                         @csrf
                                                     </form>
                                                 </div>
@@ -499,7 +504,9 @@
                             <!-- Dashboard -->
                             <!-- =================== -->
                             <li class="sidebar-item">
-                                <a class="sidebar-link" href="{{ Auth::user()->hasRole('superadmin') ? route('superadmin.dashboard.index') : route('admin.dashboard.index') }}" id="get-url" aria-expanded="false">
+                                <a class="sidebar-link"
+                                    href="{{ Auth::user()->hasRole('superadmin') ? route('superadmin.dashboard.index') : route('admin.dashboard.index') }}"
+                                    id="get-url" aria-expanded="false">
                                     <span>
                                         <i class="ti ti-aperture"></i>
                                     </span>
@@ -510,7 +517,9 @@
                             <!-- Produk -->
                             <!-- =================== -->
                             <li class="sidebar-item">
-                                <a class="sidebar-link" href="{{ Auth::user()->hasRole('superadmin') ? route('superadmin.produk.index') : route('admin.produk.index') }}" id="get-url" aria-expanded="false">
+                                <a class="sidebar-link"
+                                    href="{{ Auth::user()->hasRole('superadmin') ? route('superadmin.produk.index') : route('admin.produk.index') }}"
+                                    id="get-url" aria-expanded="false">
                                     <span>
                                         <i class="ti ti-book"></i>
                                     </span>
@@ -518,14 +527,16 @@
                                 </a>
                             </li>
                             <!-- =================== -->
-                            <!-- User -->
+                            <!-- Stok Opname -->
                             <!-- =================== -->
                             <li class="sidebar-item">
-                                <a class="sidebar-link" href="{{ Auth::user()->hasRole('superadmin') ? route('superadmin.user.index') : route('admin.user.index') }}" aria-expanded="false">
+                                <a class="sidebar-link"
+                                    href="{{ Auth::user()->hasRole('superadmin') ? route('superadmin.stok-opname.index') : route('admin.stok-opname.index') }}"
+                                    id="get-url" aria-expanded="false">
                                     <span>
-                                        <i class="ti ti-user"></i>
+                                        <i class="ti ti-package"></i>
                                     </span>
-                                    <span class="hide-menu">User</span>
+                                    <span class="hide-menu">Stok Opname</span>
                                 </a>
                             </li>
                             <!-- =================== -->
@@ -536,10 +547,25 @@
                                 <span class="hide-menu">Monitoring</span>
                             </li>
                             <!-- =================== -->
+                            <!-- User -->
+                            <!-- =================== -->
+                            <li class="sidebar-item">
+                                <a class="sidebar-link"
+                                    href="{{ Auth::user()->hasRole('superadmin') ? route('superadmin.user.index') : route('admin.user.index') }}"
+                                    aria-expanded="false">
+                                    <span>
+                                        <i class="ti ti-user"></i>
+                                    </span>
+                                    <span class="hide-menu">User</span>
+                                </a>
+                            </li>
+                            <!-- =================== -->
                             <!-- Activity Log -->
                             <!-- =================== -->
                             <li class="sidebar-item">
-                                <a class="sidebar-link" href="{{ Auth::user()->hasRole('superadmin') ? route('superadmin.activity-log.index') : route('admin.activity-log.index') }}" id="get-url" aria-expanded="false">
+                                <a class="sidebar-link"
+                                    href="{{ Auth::user()->hasRole('superadmin') ? route('superadmin.activity-log.index') : route('admin.activity-log.index') }}"
+                                    id="get-url" aria-expanded="false">
                                     <span>
                                         <i class="ti ti-activity"></i>
                                     </span>
@@ -550,7 +576,8 @@
                             <!-- Error Log -->
                             <!-- =================== -->
                             <li class="sidebar-item">
-                                <a class="sidebar-link" href="{{ url('log-viewer') }}" id="get-url" aria-expanded="false">
+                                <a class="sidebar-link" href="{{ url('log-viewer') }}" id="get-url"
+                                    aria-expanded="false">
                                     <span>
                                         <i class="ti ti-error-404"></i>
                                     </span>

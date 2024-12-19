@@ -3,6 +3,7 @@
 use App\Http\Controllers\ActivityLogController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProdukController;
+use App\Http\Controllers\Admin\StokOpnameController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -43,6 +44,11 @@ Route::group(['middleware' => 'auth'], function () {
             Route::get('/', [ProdukController::class, 'index'])->name('index');
         });
 
+        // Stok Opname
+        Route::group(['prefix' => 'stok-opname', 'as' => 'stok-opname.'], function () {
+            Route::get('/', [StokOpnameController::class, 'index'])->name('index');
+        });
+
         // User
         Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
             Route::get('/', [UserController::class, 'index'])->name('index');
@@ -67,6 +73,11 @@ Route::group(['middleware' => 'auth'], function () {
         // Produk   
         Route::group(['prefix' => 'produk', 'as' => 'produk.'], function () {
             Route::get('/', [ProdukController::class, 'index'])->name('index');
+        });
+
+        // Stok Opname
+        Route::group(['prefix' => 'stok-opname', 'as' => 'stok-opname.'], function () {
+            Route::get('/', [StokOpnameController::class, 'index'])->name('index');
         });
 
         // User
